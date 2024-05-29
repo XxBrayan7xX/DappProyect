@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Loteria</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #003366;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            font-family: 'Luckiest Guy', cursive;
+        }
+        .main-content {
+            text-align: center;
+            margin-top: 50px;
+            font-family: 'Luckiest Guy', cursive;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Luckiest Guy', cursive;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #00509e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #003366;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #002244;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="/">7 Raspando</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/ListaJugadores.html">Acceso 1</a></li>
+                <li class="nav-item"><a class="nav-link" href="/CrearJugador.html">Acceso 2</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ListaLoterias.html">Acceso 3</a></li>
+                <li class="nav-item"><a class="nav-link" href="/CrearLoteria.html">Acceso 4</a></li>
+                <li class="nav-item"><a class="nav-link" href="/CambiarLoteria.html">Acceso 5</a></li>
+                <li class="nav-item"><a class="nav-link" href="/ListaBoletos.html">Acceso 6</a></li>
+                <li class="nav-item"><a class="nav-link" href="/CrearBoleto.html">Acceso 7</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <h1>Crear Loteria</h1>
+
+        <form id="createLoteriaForm">
+            <label for="nombre">Nombre de la loteria:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ingrese la nombre de la loteria" required><br><br>
+            
+            <label for="nombreCreador">Nombre del creador:</label>
+            <input type="text" id="nombreCreador" name="nombreCreador" placeholder="Ingrese el nombre del creador" required><br><br>
+
+            <button type="submit">Crear Loteria</button>
+        </form>
+
+        <div id="createLoteriaResult"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('createLoteriaForm');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const nombre = document.getElementById('nombre').value;
+            const nombreCreador = document.getElementById('nombreCreador').value;
+
+            try {
+                const response = await fetch('/api/loteria', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nombre, nombreCreador })
+                });
+
+                const message = await response.text();
+                const createLoteriaResult = document.getElementById('createLoteriaResult');
+                createLoteriaResult.textContent = message;
+
+                // Limpia el formulario después de crear el cliente
+                form.reset();
+            } catch (error) {
+                console.error('Error al crear el cliente:', error);
+                const createLoteriaResult = document.getElementById('createLoteriaResult');
+                createLoteriaResult.textContent = 'Error al crear el cliente';
+            }
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

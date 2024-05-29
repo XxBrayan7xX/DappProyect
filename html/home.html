@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Raspando</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #003366;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            font-family: 'Luckiest Guy', cursive;
+        }
+        .main-content {
+            text-align: center;
+            margin-top: 50px;
+            font-family: 'Luckiest Guy', cursive;
+        }
+        .slot-machine {
+            margin: 50px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .reel {
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            border: 2px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: #00509e;
+            color: #fff;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .spin-button {
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            background-color: #003366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .spin-button:hover {
+            background-color: #002244;
+        }
+        .access-card {
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .access-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/">7 Raspando</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/ListaJugadores.html">Acceso 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="/CrearJugador.html">Acceso 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ListaLoterias.html">Acceso 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="/CrearLoteria.html">Acceso 4</a></li>
+            <li class="nav-item"><a class="nav-link" href="/CambiarLoteria.html">Acceso 5</a></li>
+            <li class="nav-item"><a class="nav-link" href="/ListaBoletos.html">Acceso 6</a></li>
+            <li class="nav-item"><a class="nav-link" href="/CrearBoleto.html">Acceso 7</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container main-content">
+    <h1>Bienvenidos a 7 Raspando</h1>
+    <div class="slot-machine">
+        <div class="reel" id="reel1">7</div>
+        <div class="reel" id="reel2">7</div>
+        <div class="reel" id="reel3">7</div>
+    </div>
+    <div class="spin-button" onclick="spin()">🎰</div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 1</h5>
+                    <p class="card-text">Lista Jugadores</p>
+                    <a href="/ListaJugadores.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 2</h5>
+                    <p class="card-text">Crear Jugador</p>
+                    <a href="/CrearJugador.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 3</h5>
+                    <p class="card-text">Lista loterias</p>
+                    <a href="/ListaLoterias.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 4</h5>
+                    <p class="card-text">Crear loteria</p>
+                    <a href="/CrearLoteria.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 5</h5>
+                    <p class="card-text">Cambiar nombre loteria</p>
+                    <a href="/CambiarLoteria.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 6</h5>
+                    <p class="card-text">Lista de boletos</p>
+                    <a href="/ListaBoletos.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card access-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Acceso 7</h5>
+                    <p class="card-text">Crear boleto</p>
+                    <a href="/CrearBoleto.html" class="btn btn-light">Ir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function spin() {
+        let reels = ['reel1', 'reel2', 'reel3'];
+        reels.forEach((reel, index) => {
+            let count = 0;
+            let interval = setInterval(() => {
+                document.getElementById(reel).innerText = Math.floor(Math.random() * 9) + 1;
+                count++;
+                if (count > 20) {
+                    clearInterval(interval);
+                    document.getElementById(reel).innerText = '7';
+                }
+            }, 100);
+        });
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
